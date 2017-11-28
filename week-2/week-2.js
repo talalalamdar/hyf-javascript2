@@ -76,73 +76,67 @@ let tuesday = [
 
 let tasks = [monday, tuesday];
 
-let totalDuration = 0;     // declaring a variable to calculate the total duration in minutes 
-let allTasks = [];         // declaring an array to display a list of all tasks during the two days 
 
-let twoDaysTasks = monday.map(i => {
-  totalDuration += i.duration;       // looping through monday to calculate the duration
-  allTasks.push(i.name);             // pushing the task name to the array 
-      
+
+let totalDuration = 0;              // declaring a variable to calculate the total duration in minutes 
+let tasksList = [];                 // declaring an array to display a list of all tasks during the two days 
+let test = tasks.map(i => {
+  for (let j = 0; j < i.length; j++) {       // looping through tasks to calculate the durations
+    totalDuration += i[j].duration;        
+    tasksList.push(i[j].name);                // pushing the task name to the array 
+  }
 });
-
-twoDaysTasks = tuesday.map(i => {
-  totalDuration += i.duration;       // looping through tuesday to calculate the duration
-  allTasks.push(i.name);             // pushing the task name to the array 
-})
-
 console.log("The total time that has been spend on tasks : " + totalDuration + " minutes.");
 console.log("list of all tasks during the two days : ");
-function listTasks()  {
-  for (let i = 0; i < allTasks.length; i++) {           // a for loop inside a function to display on the console a list of all tasks
-    console.log((i + 1) + " - " + allTasks[i] + ".")    // during the two days
+function list() {
+  for (let i = 0; i < tasksList.length; i++) {           // a for loop inside a function to display on the console a list of all tasks
+    console.log((i + 1) + " - " + tasksList[i] + ".")    // during the two days
   }
 }
-listTasks();
+list();
+
 
 space();
 // Step 3.2
 
-let mondayConverted = monday.map((i) => {              // converting the durations of monday from minutes to hours
-  i.duration /= 60;
-});
-let tuesdayConverted = tuesday.map((i) => {            // converting the durations of tuesday from minutes to hours  
-  i.duration /= 60;
-
-});
-console.log(tasks)
+let convertedTasks = tasks.map(i => {                 // converting the durations of tasks from minutes to hours
+  for (let j = 0; j < i.length; j++) {
+     i[j].duration /= 60;
+  }
+})
+console.log(tasks);
 
 
 space();
 // Step 3.3
 
-let filteredHours = monday.filter(i => {              // filtering the tasks that took more than two hours on monday
-  if (i.duration >= 2) {                              // and displaying it on the console
-    console.log(i) ;
-  }
-});
-filteredHours = tuesday.filter(i => {                 // filtering all the tasks that took more than two hours on tuesday
-  if (i.duration >= 2) {                              // and displaying it on the console
-    console.log(i);
+let filteredHours = tasks.filter(i => {                    // filtering the tasks that took more than two hours on monday
+  for (let j = 0; j < i.length; j++) {                     // and displaying it on the console
+    if (i[j].duration >= 2) {
+      console.log(i[j]);
+    }
   }
 });
 
 space();
 // Step 3.4 
- 
-let allSum = 0;
-let totalConvertedDuration = monday.map(i => {        // summing all the durations on monday 
-  allSum += i.duration;
-});
-totalConvertedDuration = tuesday.map(i => {           // summing all the durations on tuesday
-  allSum += i.duration;
-});
-console.log("The total hours that has been spend on tasks is almost : " + Math.round(allSum) + " hours." );
+
+
+let totalConvertedDuration = tasks.reduce((a, i) => {       // summing all the durations on tasks 
+  for (let j = 0; j < i.length; j++) {
+    a += i[j].duration;
+  }
+  return Math.round(a);
+}, 0)
+
+console.log("The total hours that has been spend on tasks is almost : " + totalConvertedDuration + " hours.");
+
 
 space();
 // Step 3.5
 
 let paying = () => {                // a function to calculate how much she should gain
-   let  result = allSum * 12;
+   let  result = totalConvertedDuration * 12;
   console.log("she should make 12.00€ per hour, and in total for two days " + result + "€ .")
 }  
 paying();
