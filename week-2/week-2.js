@@ -18,11 +18,11 @@ space();
 // Step 2
 
 
+
 let final = []
 let finalNumbers = numbers.map(num => {
   if (num % 2 === 0) {
-    final.push(num);              // pushing the even numbers twice to the empty array (final)
-    final.push(num);
+    final.push(num ,num);              // pushing the even numbers twice to the empty array (final)
   } else {
     final.push(num);              // pushing the odd numbers once to the empty array (final)
   }
