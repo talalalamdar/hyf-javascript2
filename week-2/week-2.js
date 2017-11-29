@@ -17,16 +17,14 @@ console.log("The doubled array is : " , newArr);             // returning the do
 space();
 // Step 2
 
-
-
-let final = []
-let finalNumbers = numbers.map(num => {
-  if (num % 2 === 0) {
-    final.push(num ,num);              // pushing the even numbers twice to the empty array (final)
+let final = numbers.reduce((x, z) => {
+  if (z % 2 === 0) {
+    x.push(z, z);              // pushing the even numbers twice to the empty array (final)
   } else {
-    final.push(num);              // pushing the odd numbers once to the empty array (final)
+    x.push(z);                   // pushing the odd numbers once to the empty array (final)
   }
-})
+  return x
+}, []);
 console.log("The final array of  numbers are : " , final);  
  
 space();
@@ -80,7 +78,7 @@ let tasks = [monday, tuesday];
 
 let totalDuration = 0;              // declaring a variable to calculate the total duration in minutes 
 let tasksList = [];                 // declaring an array to display a list of all tasks during the two days 
-let test = tasks.map(i => {
+let calc = tasks.map(i => {
   for (let j = 0; j < i.length; j++) {       // looping through tasks to calculate the durations
     totalDuration += i[j].duration;        
     tasksList.push(i[j].name);                // pushing the task name to the array 
