@@ -79,7 +79,7 @@ let tasks = [monday, tuesday];
 let totalDuration = 0;              // declaring a variable to calculate the total duration in minutes 
 let tasksList = [];                 // declaring an array to display a list of all tasks during the two days 
 let calc = tasks.map(i => {
-  for (let j = 0; j < i.length; j++) {       // looping through tasks to calculate the durations
+  for (let j in i) {                // looping through tasks to calculate the durations
     totalDuration += i[j].duration;        
     tasksList.push(i[j].name);                // pushing the task name to the array 
   }
@@ -98,7 +98,7 @@ space();
 // Step 3.2
 
 let convertedTasks = tasks.map(i => {                 // converting the durations of tasks from minutes to hours
-  for (let j = 0; j < i.length; j++) {
+  for (let j in i) {
      i[j].duration /= 60;
   }
 })
@@ -108,8 +108,8 @@ console.log(tasks);
 space();
 // Step 3.3
 
-let filteredHours = tasks.filter(i => {                    // filtering the tasks that took more than two hours on monday
-  for (let j = 0; j < i.length; j++) {                     // and displaying it on the console
+let filteredHours = tasks.filter(i => {                // filtering the tasks that took more than two hours on monday
+  for (let j in i) {                                   // and displaying it on the console
     if (i[j].duration >= 2) {
       console.log(i[j]);
     }
@@ -121,7 +121,7 @@ space();
 
 
 let totalConvertedDuration = tasks.reduce((a, i) => {       // summing all the durations on tasks 
-  for (let j = 0; j < i.length; j++) {
+  for  (let j in i) {
     a += i[j].duration;
   }
   return Math.round(a);
