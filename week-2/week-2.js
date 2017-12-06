@@ -19,9 +19,9 @@ space();
 
 let finalArray = numbers.reduce((x, z) => {
   if (z % 2 === 0) {
-    x.push(z, z);              // pushing the even numbers twice to the empty array (final)
+    x.push(z, z);              // pushing the even numbers twice 
   } else {
-    x.push(z);                   // pushing the odd numbers once to the empty array (final)
+    x.push(z);                   // pushing the odd numbers once 
   }
   return x
 }, []);
