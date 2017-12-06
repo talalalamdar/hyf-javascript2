@@ -8,12 +8,16 @@ space();
 // Step 1
 
 let divisibleBy3 = x => {
-    if (x % 3 === 0) {
-        console.log(x + " is divisible by 3.");
+    if (x % 3 === 0 && x % 5 === 0) {
+        console.log(x + " is divisible by 3 and 5.");
+    } else if (x % 3 === 0 ) {
+        console.log(x + " is divisible by 3.")
     }
 };
 let divisibleBy5 = x => {
-    if (x % 5 === 0) {
+    if (x % 5 === 0 && x % 3 === 0) {
+        console.log(x + " is divisible by 5 and 3.")
+    } else if (x % 5 === 0) {
         console.log(x + " is divisible by 5.")
     }
 };
