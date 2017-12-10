@@ -10,7 +10,7 @@ space();
 let divisibleBy3 = x => {
     if (x % 3 === 0 && x % 5 === 0) {
         console.log(x + " is divisible by 3 and 5.");
-    } else if (x % 3 === 0 ) {
+    } else if (x % 3 === 0) {
         console.log(x + " is divisible by 3.")
     }
 };
@@ -89,13 +89,42 @@ function f1(val) {
 }                                       // (including arrays), the "value" is a reference to the object.                                                                
 f1(x);                                  // Changing the value of a variable never changes the underlying primitive or object,  
 console.log(x);                         // it just points the variable to a new primitive or object.                        
-                                        // However, changing a property of an object referenced by a 
-                                        // variable does change the underlying object.
+// However, changing a property of an object referenced by a 
+// variable does change the underlying object.
 let y = { x: 9 };
 function f2(val) {
 
     val.x = val.x + 1;
     return val;
-}    
+}
 f2(y);
 console.log(y);
+
+
+space();
+// Step 5 scop and closures 
+
+let addSix = function (num) {
+    return num + 6;
+}
+console.log(addSix(10));
+console.log(addSix(21));
+
+
+space();
+
+function checker(arr) {
+    let newArr = [];
+    arr.forEach(i => {
+        if (newArr.includes(i)) {
+            newArr.push(i);
+            newArr.pop();
+        } else {
+            newArr.push(i);
+        }
+    });
+    return newArr;
+}
+
+console.log(checker(['a', 'b', 'c', 'd', 'a', 'e', 'f', 'c']));
+console.log(checker([1,2,3,2,4,5,1,4,3,2,6,7,5,7,6,1,2,5,8,7,8]))
