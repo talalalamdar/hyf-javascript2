@@ -75,8 +75,10 @@ space();
 
 
 let arr = [[1, 2], [3, 4], [5, 6]];
-arr.forEach(x => {                          // using forEach method to show aal the items in the array
-    console.log(x);
+arr.forEach(innerArray => {                          // using forEach method to show aal the items in the array
+    innerArray.forEach(ele => {
+        console.log(ele);
+    })
 })
 
 space();
@@ -89,9 +91,9 @@ function f1(val) {
 }                                       // (including arrays), the "value" is a reference to the object.                                                                
 f1(x);                                  // Changing the value of a variable never changes the underlying primitive or object,  
 console.log(x);                         // it just points the variable to a new primitive or object.                        
-// However, changing a property of an object referenced by a 
-// variable does change the underlying object.
 let y = { x: 9 };
+                                        // However, changing a property of an object referenced by a 
+                                        // variable does change the underlying object.
 function f2(val) {
 
     val.x = val.x + 1;
@@ -127,4 +129,4 @@ function checker(arr) {
 }
 
 console.log(checker(['a', 'b', 'c', 'd', 'a', 'e', 'f', 'c']));
-console.log(checker([1,2,3,2,4,5,1,4,3,2,6,7,5,7,6,1,2,5,8,7,8]))
+console.log(checker([1, 2, 3, 2, 4, 5, 1, 4, 3, 2, 6, 7, 5, 7, 6, 1, 2, 5, 8, 7, 8]))
